@@ -115,6 +115,7 @@
 		if (newVersionAvailable)
 		   {
 		%>
+
 		<div class="alert alert-warning"><b><fmt:message key="jsp.version.notice.new_version_head"/></b>		
 		<fmt:message key="jsp.version.notice.new_version_help"/><a href="<%=latestVersionURL %>"><%= latestVersionHandle %></a>
 		</div>
@@ -136,8 +137,12 @@
 
                 <%-- <strong>Please use this identifier to cite or link to this item:
                 <code><%= HandleManager.getCanonicalForm(handle) %></code></strong>--%>
-                <div class="well"><fmt:message key="jsp.display-item.identifier"/>
-                <code><%= HandleManager.getCanonicalForm(handle) %></code></div>
+                <div class="well"><%--<fmt:message key="jsp.display-item.identifier"/>
+                <code><%= HandleManager.getCanonicalForm(handle) %></code></div>--%>
+                <%-- Tiago - Tarefa 1586 --%>
+		<code><%= item.getName() %></code></div>
+
+
 <%
         if (admin_button)  // admin edit button
         { %>
@@ -188,7 +193,9 @@
     String displayStyle = (displayAll ? "full" : "");
 %>
     <dspace:item-preview item="<%= item %>" />
+    <dspace:item-preview item="<%= item %>" />
     <dspace:item item="<%= item %>" collections="<%= collections %>" style="<%= displayStyle %>" />
+
 <div class="container row">
 <%
     String locationLink = request.getContextPath() + "/handle/" + handle;
@@ -210,7 +217,7 @@
         {
 %>
     <a class="btn btn-default" href="<%=locationLink %>?mode=simple">
-        <fmt:message key="jsp.display-item.text1"/>
+	<fmt:message key="jsp.display-item.text1"/>      
     </a>
 <%
         }
@@ -233,9 +240,7 @@
         else
         {
 %>
-    <a class="btn btn-default" href="<%=locationLink %>?mode=full">
-        <fmt:message key="jsp.display-item.text2"/>
-    </a>
+    <a class="btn btn-default" href="<%=locationLink %>?mode=full"><fmt:message key="jsp.display-item.text2"/>  </a>
 <%
         }
     }
@@ -286,7 +291,7 @@
         if(!item_history_view_admin || admin_button) {         
 %>
 	<div id="versionHistory" class="panel panel-info">
-	<div class="panel-heading"><fmt:message key="jsp.version.history.head2" /></div>
+	<div class="panel-heading">QAQUI<fmt:message key="jsp.version.history.head2" /></div>
 	
 	<table class="table panel-body">
 		<tr>
@@ -300,6 +305,7 @@
 				id="tt4" class="oddRowOddCol"><fmt:message key="jsp.version.history.column4"/></th>
 			<th 
 				 id="tt5" class="oddRowEvenCol"><fmt:message key="jsp.version.history.column5"/> </th>
+			
 		</tr>
 		
 		<% for(Version versRow : historyVersions) {  

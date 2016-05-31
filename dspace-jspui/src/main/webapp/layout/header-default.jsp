@@ -151,6 +151,7 @@
 		<h1><fmt:message key="jsp.layout.header-default.brand.heading" /></h1>
         <fmt:message key="jsp.layout.header-default.brand.description" /> 
         </div>
+</br>
         <div class="col-md-3"><img class="pull-right" src="<%= request.getContextPath() %>/image/logo.gif" alt="DSpace logo" />
         </div>
 	</div>
